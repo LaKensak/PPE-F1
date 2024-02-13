@@ -9,9 +9,10 @@ $retour = "../../index.php";
 // Récupération  des coureurs : licence, nom prenom, sexe, dateNaissanceFr au format fr, idCategorie, nomClub
 $select = new Select();
 $sql = <<<EOD
-    Select grandprix.nom,date_format(grandprix.date, '%d/%m/%Y') as dateFr, pays.logoPays
-    FROM grandprix
-    join f1.pays on grandprix.idPays = pays.code
+    SELECT pilote.id, pilote.nom, pilote.prenom, pilote.photo, pilote.numeroPilote, pilote.idPays,e.nom,e.idPays,logoPays
+    FROM pilote
+    JOIN f1.ecurie e on pilote.idPays = e.idPays
+    JOIN f1.pays p on pilote.idPays = p.code
 EOD;
 
 $lesClubs = $select->getRows($sql);

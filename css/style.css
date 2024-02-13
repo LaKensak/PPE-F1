@@ -37,26 +37,46 @@ main {
     padding-left: 960%;
 }
 
+
+.border {
+    border-bottom: 2px solid #ff0000;
+    background-color: red;
+}
+
+td {
+    font-size: small;
+    font-weight: lighter;
+}
+
 /*
  Calendrier
 */
 
+
+.result {
+    font-size: 15px;
+}
+
 .table-container {
-    width: 20%;
-    height: 10%;
-    margin: auto; /* Centre le tableau */
+    margin: auto;
+    max-width: 25%;
+}
+
+th {
+    font-family: fangsong;
+    font-size: large;
 }
 
 .table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
-    border: none; /* Remove borders from the table */
+    border: none;
 }
 
 .table td,
 .table th {
-    border: none; /* Remove borders from table cells */
+    border: none;
     padding: 10px;
     text-align: left;
 }
@@ -65,14 +85,13 @@ main {
 .table img {
     display: block;
     margin: auto;
-    max-width: 50px; /* Ajustez la taille maximale de l'image selon vos besoins */
+    max-width: 50px;
     max-height: 50px;
 }
 
-/* Ajout d'une bordure en bas de chaque ligne sauf la dernière */
+
 .table tr:not(:last-child) {
-    border-left: none; /* Remove the left border */
-    border-bottom: 1px solid rgba(221, 221, 221, 0); /* Add a bottom border instead of left */
+    border-left: none;
 }
 
 
