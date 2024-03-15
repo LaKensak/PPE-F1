@@ -14,14 +14,14 @@ $sql = <<<EOD
     join f1.pays on grandprix.idPays = pays.code
 EOD;
 
-$lesClubs = $select->getRows($sql);
+$Calendrier = $select->getRows($sql);
 
 // vérification de la présence du logo
 // ajout d'une colonne permettant de vérifier l'existence du logo
 $rep = RACINE . "/img";
-for ($i = 0; $i < count($lesClubs); $i++) {
-    $fichier = $lesClubs[$i]['logoPays'];
-    $lesClubs[$i]['present'] = $fichier != null && file_exists("$rep/$fichier");
+for ($i = 0; $i < count($Calendrier); $i++) {
+    $fichier = $Calendrier[$i]['logoPays'];
+    $Calendrier[$i]['present'] = $fichier != null && file_exists("$rep/$fichier");
 }
 
 

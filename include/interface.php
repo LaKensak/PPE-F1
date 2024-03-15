@@ -20,7 +20,40 @@ EOD;
             integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
             crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/css/style.css">
+    <style>
+        header, footer {
+            background-color: #d90429;
+            color: #fff;
+        }
 
+        .navbar-align a {
+            color: #fff;
+            transition: color 0.3s ease, transform 0.3s ease;
+            position: relative;
+        }
+
+        .navbar-align a:hover {
+            color: #000;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.5), 0 0 30px rgba(255, 255, 255, 0.5), 0 0 40px rgba(255, 255, 255, 0.5);
+            transform: scale(1.1);
+        }
+
+        .navbar-align a::before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #000;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .navbar-align a:hover::before {
+            transform: scaleX(1);
+        }
+    </style>
     <?php
     // récupération du nom du fichier php appelant cela va permettre de charger l'interface correspondante : fichier html portant le même nom ou le fichier de même nom dans le dossier interface
     $file = pathinfo($_SERVER['PHP_SELF'], PATHINFO_FILENAME);
@@ -56,6 +89,9 @@ EOD;
                 <a href="../../index.php">Accueil</a>
                 <a href='/calendrier/index.php'>
                     Calendrier
+                </a>
+                <a href='/Classement_ecurie/index.php'>
+                    Classement
                 </a>
             </div>
         </div>

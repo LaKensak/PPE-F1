@@ -6,24 +6,26 @@ require $_SERVER['DOCUMENT_ROOT'] . "/include/autoload.php";
 $titreFonction = "Affichage des données en mode tableau";
 $retour = "../../index.php";
 
-
+// Récupération  des coureurs : licence, nom prenom, sexe, dateNaissanceFr au format fr, idCategorie, nomClub
 $select = new Select();
 $sql = <<<EOD
-    SELECT pilote.nom, pilote.prenom, pays.logoPays, resultat.place, resultat.point
-    FROM pilote
-    JOIN pays ON pilote.idPays = pays.code
-    JOIN resultat ON pilote.id = resultat.idPilote;
+    SELECT ecurie.nom, ecurie.logoEcurie
+    FROM ecurie
 EOD;
 
+////    SELECT ecurie.nom, ecurie.logoEcurie, resultat.place, resultat.point
+////    FROM ecurie
+////    JOIN pilote ON ecurie.id = pilote.idEcurie
+////    JOIN resultat ON pilote.id = resultat.idPilote;
 
-$lesClassement = $select->getRows($sql);
+$lesClassementEcurie = $select->getRows($sql);
 
 // vérification de la présence du logo
 // ajout d'une colonne permettant de vérifier l'existence du logo
 $rep = RACINE . "/img";
-for ($i = 0; $i < count($lesClassement); $i++) {
-    $fichier = $lesClassement[$i]['logoPays'];
-    $lesClassement[$i]['present'] = $fichier != null && file_exists("$rep/$fichier");
+for ($i = 0; $i < count($lesClassementEcurie); $i++) {
+    $fichier = $lesClassementEcurie[$i]['logoEcurie'];
+    $lesClassementEcurie[$i]['present'] = $fichier != null && file_exists("$rep/$fichier");
 }
 
 

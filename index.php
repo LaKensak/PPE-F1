@@ -5,3 +5,6 @@ $titreFonction = "Menu général ";
 // chargement de l'interface
 
 require "include/interface.php";
+
+
+
